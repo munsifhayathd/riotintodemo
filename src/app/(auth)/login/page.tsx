@@ -210,14 +210,7 @@ function LoginForm() {
                 </AnimatePresence>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="text-right">
-                <Link
-                  href="/forgot-password"
-                  className="text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
-                >
-                  Forgot Password?
-                </Link>
-              </motion.div>
+
 
               <motion.div
                 variants={itemVariants}
