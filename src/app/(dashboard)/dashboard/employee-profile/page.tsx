@@ -10,7 +10,7 @@ const employeeData = {
   id: "EMP001",
   firstName: "Sarah",
   lastName: "Johnson",
-  email: "sarah.johnson@woodside.com.au",
+      email: "sarah.johnson@riotinto.com",
   phone: "+61 8 9348 4000",
   position: "Senior Safety Officer",
   department: "Health, Safety & Environment",

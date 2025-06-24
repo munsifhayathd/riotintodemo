@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState({
-    companyName: "Woodside Energy",
+    companyName: "Rio Tinto",
     emailNotifications: true,
     smsNotifications: false,
     autoRenewalReminder: 30,

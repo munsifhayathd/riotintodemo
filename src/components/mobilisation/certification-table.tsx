@@ -13,7 +13,7 @@ const mockCertifications = [
     issueDate: "2024-01-15",
     expiryDate: "2027-01-15",
     status: "Valid",
-    project: "Scarborough LNG",
+    project: "Iron Ore Western Australia",
   },
   {
     id: "2",
@@ -22,7 +22,7 @@ const mockCertifications = [
     issueDate: "2023-06-20",
     expiryDate: "2025-06-20",
     status: "Expiring Soon",
-    project: "Pluto Expansion",
+    project: "Weipa Bauxite",
   },
   {
     id: "3",
@@ -31,7 +31,7 @@ const mockCertifications = [
     issueDate: "2024-03-10",
     expiryDate: "2026-03-10",
     status: "Valid",
-    project: "Scarborough LNG",
+    project: "Iron Ore Western Australia",
   },
   {
     id: "4",
@@ -40,7 +40,7 @@ const mockCertifications = [
     issueDate: "2022-11-05",
     expiryDate: "2025-11-05",
     status: "Expiring Soon",
-    project: "North West Shelf",
+    project: "Yarwun Alumina Refinery",
   },
   {
     id: "5",
@@ -49,7 +49,7 @@ const mockCertifications = [
     issueDate: "2023-12-01",
     expiryDate: "2024-12-01",
     status: "Expired",
-    project: "Wheatstone",
+    project: "Dampier Salt",
   },
   {
     id: "6",
@@ -58,7 +58,7 @@ const mockCertifications = [
     issueDate: "2024-05-10",
     expiryDate: "2027-05-10",
     status: "Valid",
-    project: "Browse FLNG",
+    project: "Bell Bay Aluminium",
   },
   {
     id: "7",
@@ -67,7 +67,7 @@ const mockCertifications = [
     issueDate: "2023-08-15",
     expiryDate: "2025-08-15",
     status: "Expiring Soon",
-    project: "Scarborough LNG",
+    project: "Iron Ore Western Australia",
   },
   {
     id: "8",
@@ -76,7 +76,7 @@ const mockCertifications = [
     issueDate: "2024-02-20",
     expiryDate: "2027-02-20",
     status: "Valid",
-    project: "Pluto Expansion",
+    project: "Gove Bauxite",
   },
   {
     id: "9",
@@ -85,7 +85,7 @@ const mockCertifications = [
     issueDate: "2022-10-05",
     expiryDate: "2024-10-05",
     status: "Expired",
-    project: "North West Shelf",
+    project: "Boyne Smelters Limited",
   },
   {
     id: "10",
@@ -94,7 +94,7 @@ const mockCertifications = [
     issueDate: "2024-04-12",
     expiryDate: "2026-04-12",
     status: "Valid",
-    project: "Wheatstone",
+    project: "Simandou Project",
   },
 ];
 
