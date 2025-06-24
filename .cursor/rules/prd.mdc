@@ -1,0 +1,114 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+
+📘 Product Requirements Document (PRD)
+
+
+# Project Information
+	•	Project Name: [Enter Project Name]
+	•	Project Type: Next.js Web App (App Router – Full-stack)
+	•	Tech Stack:
+	•	Framework: Next.js (App Router)
+	•	Database: Prisma ORM
+	•	API Communication: Axios
+	•	Styling: TailwindCSS
+	•	State Management: Zustand / Context API (if needed)
+
+
+# Project Goal & Overview
+
+[Write a brief overview of what the app does, who it’s for, and what problem it solves.]
+
+⸻
+
+Features
+	1.	[Feature Name] – [Short description of what it does]
+	2.	[Feature Name] – [Short description]
+	3.	[Feature Name] – [Short description]
+
+⸻
+
+Project Structure & Coding Standards
+
+MVVM-based Modular Structure
+
+Each feature/module should follow:
+
+/app
+  /[feature-name]
+    /components     → UI Components
+    /views          → Pages/screens
+    /view-models    → Business logic and interactions
+    /services       → Axios-based API handlers
+    /types          → Feature-specific TypeScript types
+    /hooks          → Feature-specific hooks
+/config
+  global-config.ts   → App-wide settings (app name, description, etc.)
+/styles
+  globals.css        → Central theming and global styles
+/lib                 → Shared utilities (formatters, helpers)
+
+	•	Follow MVVM pattern strictly with a clean modular breakdown.
+	•	Keep each module self-contained, importing only from /lib or /config when needed.
+
+⸻
+
+Global Styling & Theming
+	•	All theming, font styles, utility classes, and responsive design rules must be defined in globals.css inside /styles.
+	•	Avoid inline styling or scoped styles unless absolutely necessary.
+	•	Update globals.css for:
+	•	Colors
+	•	Typography
+	•	Animations
+	•	Layout utilities
+	•	Media queries
+
+Always reference globals.css for consistent UI across the entire project.
+
+⸻
+
+⚙️ Global Configuration
+	•	Use global-config.ts (inside /config) for app-wide configurations such as:
+	•	App name
+	•	Default descriptions
+	•	Page titles & SEO metadata
+	•	API base URLs (if not environment-dependent)
+	•	Misc flags like feature toggles or environment modes
+
+ No hardcoded strings or config values inside individual modules. Pull everything from global-config.ts.
+
+⸻
+
+Best Practices
+	•	Follow DRY, KISS, and SOLID principles
+	•	Use shared components from a common module when reuse is possible
+	•	Maintain strict naming conventions:
+	•	PascalCase → Components
+	•	camelCase → Variables, functions
+	•	kebab-case → Folders and file names (except components/hooks/types)
+	•	Prettier + ESLint are required (use team config)
+	•	Define and use TypeScript types/interfaces consistently
+	•	Always split logic out of components into view-models or services
+
+⸻
+
+Error Handling
+	•	Centralize error handling via Axios interceptors (within /lib)
+	•	Use try/catch in view-models for error-prone logic
+	•	Return user-friendly messages, never raw errors
+	•	Consider a reusable handleError function for consistency
+
+⸻
+
+Cursor AI Agent Instructions
+	•	Generate modular MVVM code only
+	•	Use folder structure and naming rules strictly
+	•	Use globals.css for styling
+	•	Use global-config.ts for all configurations, metadata, and static content
+	•	Comment any non-trivial logic
+	•	Use Axios only for external/internal API communication (within services)
+	•	Reuse from /lib, /config, and /styles consistently

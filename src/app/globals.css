@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+    --primary: 349 92% 49%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 30%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 30%;
+    --accent: 0 0% 30%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 349 92% 49%;
+    --chart-1: 349 92% 49%;
+    --chart-2: 30 55% 40%;
+    --chart-3: 25 30% 45%;
+    --chart-4: 35 40% 50%;
+    --chart-5: 0 0% 30%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 13%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 349 92% 49%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 30%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 30%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 349 92% 49%;
+    --chart-1: 349 92% 49%;
+    --chart-2: 30 55% 40%;
+    --chart-3: 25 30% 45%;
+    --chart-4: 35 40% 50%;
+    --chart-5: 0 0% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Rio Tinto Primary Brand Colors */
+  .rio-tinto-red {
+    color: #ea0e30;
+  }
+  .bg-rio-tinto-red {
+    background-color: #ea0e30;
+  }
+  .rio-tinto-dark {
+    color: #231F20;
+  }
+  .bg-rio-tinto-dark {
+    background-color: #231F20;
+  }
+  .rio-tinto-grey {
+    color: #4D4D4F;
+  }
+  .bg-rio-tinto-grey {
+    background-color: #4D4D4F;
+  }
+  
+  /* Rio Tinto Supporting Colors */
+  .rio-tinto-white {
+    color: #FFFFFF;
+  }
+  .bg-rio-tinto-white {
+    background-color: #FFFFFF;
+  }
+  .rio-tinto-light-grey {
+    color: #F5F5F5;
+  }
+  .bg-rio-tinto-light-grey {
+    background-color: #F5F5F5;
+  }
+  
+  /* Mining Industry Inspired Colors */
+  .rio-tinto-copper {
+    color: #B87333;
+  }
+  .bg-rio-tinto-copper {
+    background-color: #B87333;
+  }
+  .rio-tinto-iron {
+    color: #8B4513;
+  }
+  .bg-rio-tinto-iron {
+    background-color: #8B4513;
+  }
+  .rio-tinto-earth {
+    color: #8B7355;
+  }
+  .bg-rio-tinto-earth {
+    background-color: #8B7355;
+  }
+}
