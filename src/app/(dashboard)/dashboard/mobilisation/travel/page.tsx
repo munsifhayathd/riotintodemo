@@ -6,6 +6,7 @@ import { TravelBookingForm } from "@/components/mobilisation/travel-booking-form
 import { Modal } from "@/components/ui/modal";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { TravelBookingData } from "@/types/mobilisation";
 
 export default function TravelLogisticsPage() {
   const [showBookingModal, setShowBookingModal] = useState(false);
@@ -13,7 +14,7 @@ export default function TravelLogisticsPage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [destinationFilter, setDestinationFilter] = useState("All");
 
-  const handleNewBooking = (data: any) => {
+  const handleNewBooking = (data: TravelBookingData) => {
     // In a real app, this would save the data to the database
     console.log("New travel booking:", data);
     setShowBookingModal(false);

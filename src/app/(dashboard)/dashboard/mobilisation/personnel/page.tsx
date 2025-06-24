@@ -6,6 +6,7 @@ import { PersonnelAllocationForm } from "@/components/mobilisation/personnel-all
 import { Modal } from "@/components/ui/modal";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { PersonnelAllocationData } from "@/types/mobilisation";
 
 export default function PersonnelAllocationPage() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -13,7 +14,7 @@ export default function PersonnelAllocationPage() {
   const [roleFilter, setRoleFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
 
-  const handleAddAllocation = (data: any) => {
+  const handleAddAllocation = (data: PersonnelAllocationData) => {
     // In a real app, this would save the data to the database
     console.log("New allocation:", data);
     setShowAddModal(false);
@@ -23,7 +24,12 @@ export default function PersonnelAllocationPage() {
     <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Personnel Allocation</h1>
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Personnel Allocation</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Manage personnel allocation across global mining operations
+          </p>
+        </div>
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -42,7 +48,7 @@ export default function PersonnelAllocationPage() {
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Manage Personnel Allocations</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-            Allocate personnel to specific roles and projects, track allocations, and manage notifications.
+            Allocate personnel to specific roles and mining operations, track allocations, and manage notifications.
           </p>
           
           {/* Filters */}
@@ -53,12 +59,13 @@ export default function PersonnelAllocationPage() {
               onChange={(e) => setProjectFilter(e.target.value)}
               className="rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring"
             >
-              <option value="All">All Projects</option>
-              <option value="Scarborough LNG">Scarborough LNG</option>
-              <option value="Pluto Expansion">Pluto Expansion</option>
-              <option value="North West Shelf">North West Shelf</option>
-              <option value="Wheatstone">Wheatstone</option>
-              <option value="Browse FLNG">Browse FLNG</option>
+              <option value="All">All Mining Operations</option>
+              <option value="Iron Ore Western Australia">Iron Ore Western Australia</option>
+              <option value="Oyu Tolgoi Mongolia">Oyu Tolgoi Mongolia</option>
+              <option value="Kennecott Utah">Kennecott Utah</option>
+              <option value="Diavik Diamond Mine">Diavik Diamond Mine</option>
+              <option value="Simandou Guinea">Simandou Guinea</option>
+              <option value="Rincon Lithium">Rincon Lithium</option>
             </select>
             
             {/* Role Filter */}
@@ -68,10 +75,14 @@ export default function PersonnelAllocationPage() {
               className="rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="All">All Roles</option>
-              <option value="Project Manager">Project Manager</option>
-              <option value="Engineer">Engineer</option>
+              <option value="Mine Manager">Mine Manager</option>
+              <option value="Mining Engineer">Mining Engineer</option>
               <option value="Safety Officer">Safety Officer</option>
-              <option value="Technician">Technician</option>
+              <option value="Equipment Operator">Equipment Operator</option>
+              <option value="Geologist">Geologist</option>
+              <option value="Metallurgist">Metallurgist</option>
+              <option value="Environmental Engineer">Environmental Engineer</option>
+              <option value="Maintenance Technician">Maintenance Technician</option>
             </select>
             
             {/* Status Filter */}

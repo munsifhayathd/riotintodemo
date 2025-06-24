@@ -4,21 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-
-interface TravelBookingFormProps {
-  onSubmit: (data: any) => void;
-  onCancel: () => void;
-}
+import { TravelBookingFormProps, TravelBookingData } from "@/types/mobilisation";
 
 export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Omit<TravelBookingData, 'id' | 'status' | 'estimatedCost'>>({
     personnelName: "",
     project: "",
-    departure: "",
+    origin: "",
     destination: "",
     departureDate: "",
     returnDate: "",
-    flightPreference: "",
+    flightClass: "",
     accommodationType: "",
     specialRequirements: "",
   });
@@ -32,8 +28,8 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
     e.preventDefault();
     onSubmit({ 
       ...formData, 
-      flightStatus: "Quote Requested", 
-      accommodationStatus: "Quote Requested",
+      status: "Quote Requested", 
+      estimatedCost: Math.floor(Math.random() * 5000) + 1000,
       id: Date.now().toString() 
     });
   };
@@ -61,7 +57,7 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="project">Project</Label>
+          <Label htmlFor="project">Mining Operation</Label>
           <select
             id="project"
             name="project"
@@ -70,32 +66,35 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
             required
           >
-            <option value="">Select project</option>
-            <option value="Scarborough LNG">Scarborough LNG</option>
-            <option value="Pluto Expansion">Pluto Expansion</option>
-            <option value="North West Shelf">North West Shelf</option>
-            <option value="Wheatstone">Wheatstone</option>
-            <option value="Browse FLNG">Browse FLNG</option>
+            <option value="">Select mining operation</option>
+            <option value="Iron Ore Western Australia">Iron Ore Western Australia</option>
+            <option value="Oyu Tolgoi Mongolia">Oyu Tolgoi Mongolia</option>
+            <option value="Kennecott Utah">Kennecott Utah</option>
+            <option value="Diavik Diamond Mine">Diavik Diamond Mine</option>
+            <option value="Simandou Guinea">Simandou Guinea</option>
+            <option value="Rincon Lithium">Rincon Lithium</option>
           </select>
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="departure">Departure City</Label>
+          <Label htmlFor="origin">Origin City</Label>
           <select
-            id="departure"
-            name="departure"
-            value={formData.departure}
+            id="origin"
+            name="origin"
+            value={formData.origin}
             onChange={handleChange}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
             required
           >
-            <option value="">Select departure city</option>
-            <option value="Perth">Perth</option>
-            <option value="Brisbane">Brisbane</option>
-            <option value="Sydney">Sydney</option>
-            <option value="Melbourne">Melbourne</option>
-            <option value="Adelaide">Adelaide</option>
-            <option value="Darwin">Darwin</option>
+            <option value="">Select origin city</option>
+            <option value="Perth">Perth, Australia</option>
+            <option value="Brisbane">Brisbane, Australia</option>
+            <option value="Sydney">Sydney, Australia</option>
+            <option value="Melbourne">Melbourne, Australia</option>
+            <option value="Adelaide">Adelaide, Australia</option>
+            <option value="Darwin">Darwin, Australia</option>
+            <option value="Vancouver">Vancouver, Canada</option>
+            <option value="Salt Lake City">Salt Lake City, USA</option>
           </select>
         </div>
         
@@ -110,11 +109,12 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
             required
           >
             <option value="">Select destination</option>
-            <option value="Karratha">Karratha</option>
-            <option value="Port Hedland">Port Hedland</option>
-            <option value="Onslow">Onslow</option>
-            <option value="Broome">Broome</option>
-            <option value="Dampier">Dampier</option>
+            <option value="Pilbara">Pilbara, Western Australia</option>
+            <option value="Ulaanbaatar">Ulaanbaatar, Mongolia</option>
+            <option value="Salt Lake City">Salt Lake City, Utah</option>
+            <option value="Yellowknife">Yellowknife, Canada</option>
+            <option value="Conakry">Conakry, Guinea</option>
+            <option value="Salta">Salta, Argentina</option>
           </select>
         </div>
         
@@ -143,20 +143,19 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="flightPreference">Flight Preference</Label>
+          <Label htmlFor="flightClass">Flight Class</Label>
           <select
-            id="flightPreference"
-            name="flightPreference"
-            value={formData.flightPreference}
+            id="flightClass"
+            name="flightClass"
+            value={formData.flightClass}
             onChange={handleChange}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
-            <option value="">Select preference</option>
+            <option value="">Select flight class</option>
             <option value="Economy">Economy</option>
             <option value="Premium Economy">Premium Economy</option>
             <option value="Business">Business</option>
-            <option value="Morning Departure">Morning Departure</option>
-            <option value="Afternoon Departure">Afternoon Departure</option>
+            <option value="First">First Class</option>
           </select>
         </div>
         
@@ -173,8 +172,8 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
             <option value="Hotel - Standard">Hotel - Standard</option>
             <option value="Hotel - Premium">Hotel - Premium</option>
             <option value="Serviced Apartment">Serviced Apartment</option>
-            <option value="Company Accommodation">Company Accommodation</option>
-            <option value="Camp Accommodation">Camp Accommodation</option>
+            <option value="Mining Camp">Mining Camp</option>
+            <option value="Company Lodge">Company Lodge</option>
           </select>
         </div>
       </div>
@@ -184,7 +183,7 @@ export function TravelBookingForm({ onSubmit, onCancel }: TravelBookingFormProps
         <textarea
           id="specialRequirements"
           name="specialRequirements"
-          value={formData.specialRequirements}
+          value={formData.specialRequirements || ""}
           onChange={handleChange}
           placeholder="Any special dietary, accessibility, or other requirements..."
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"

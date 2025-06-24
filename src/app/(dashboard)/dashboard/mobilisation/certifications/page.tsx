@@ -6,6 +6,7 @@ import { CertificationForm } from "@/components/mobilisation/certification-form"
 import { Modal } from "@/components/ui/modal";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { CertificationData } from "@/types/mobilisation";
 
 export default function SafetyCertificationsPage() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -13,7 +14,7 @@ export default function SafetyCertificationsPage() {
   const [projectFilter, setProjectFilter] = useState("All");
   const [certificationFilter, setCertificationFilter] = useState("All");
 
-  const handleAddCertification = (data: any) => {
+  const handleAddCertification = (data: CertificationData) => {
     // In a real app, this would save the data to the database
     console.log("New certification:", data);
     setShowAddModal(false);

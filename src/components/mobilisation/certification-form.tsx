@@ -4,14 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-
-interface CertificationFormProps {
-  onSubmit: (data: any) => void;
-  onCancel: () => void;
-}
+import { CertificationFormProps, CertificationData } from "@/types/mobilisation";
 
 export function CertificationForm({ onSubmit, onCancel }: CertificationFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Omit<CertificationData, 'id' | 'status'>>({
     personnelName: "",
     certificationType: "",
     project: "",
@@ -28,7 +24,11 @@ export function CertificationForm({ onSubmit, onCancel }: CertificationFormProps
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ ...formData, status: "Valid", id: Date.now().toString() });
+    onSubmit({ 
+      ...formData, 
+      status: "Valid", 
+      id: Date.now().toString() 
+    });
   };
 
   return (
@@ -64,17 +64,19 @@ export function CertificationForm({ onSubmit, onCancel }: CertificationFormProps
             required
           >
             <option value="">Select certification</option>
-            <option value="BOSIET">BOSIET</option>
-            <option value="Helicopter Safety">Helicopter Safety</option>
-            <option value="First Aid">First Aid</option>
-            <option value="Confined Space">Confined Space</option>
+            <option value="Mine Safety">Mine Safety Training</option>
+            <option value="Heavy Equipment">Heavy Equipment Operation</option>
+            <option value="First Aid">First Aid & CPR</option>
+            <option value="Confined Space">Confined Space Entry</option>
             <option value="Working at Height">Working at Height</option>
-            <option value="Fire Safety">Fire Safety</option>
+            <option value="Hazmat">Hazardous Materials Handling</option>
+            <option value="Blasting">Blasting & Explosives</option>
+            <option value="Respiratory">Respiratory Protection</option>
           </select>
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="project">Project</Label>
+          <Label htmlFor="project">Mining Operation</Label>
           <select
             id="project"
             name="project"
@@ -83,12 +85,13 @@ export function CertificationForm({ onSubmit, onCancel }: CertificationFormProps
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
             required
           >
-            <option value="">Select project</option>
-            <option value="Scarborough LNG">Scarborough LNG</option>
-            <option value="Pluto Expansion">Pluto Expansion</option>
-            <option value="North West Shelf">North West Shelf</option>
-            <option value="Wheatstone">Wheatstone</option>
-            <option value="Browse FLNG">Browse FLNG</option>
+            <option value="">Select mining operation</option>
+            <option value="Iron Ore Western Australia">Iron Ore Western Australia</option>
+            <option value="Oyu Tolgoi Mongolia">Oyu Tolgoi Mongolia</option>
+            <option value="Kennecott Utah">Kennecott Utah</option>
+            <option value="Diavik Diamond Mine">Diavik Diamond Mine</option>
+            <option value="Simandou Guinea">Simandou Guinea</option>
+            <option value="Rincon Lithium">Rincon Lithium</option>
           </select>
         </div>
         
