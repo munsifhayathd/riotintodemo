@@ -11,6 +11,15 @@ const HARDCODED_USER = {
   last_name: "User",
 };
 
+// Extended user type
+interface ExtendedUser {
+  id: string;
+  email: string;
+  name: string;
+  first_name: string;
+  last_name: string;
+}
+
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
@@ -25,7 +34,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<ExtendedUser | null> {
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
@@ -41,7 +50,7 @@ export const authOptions: NextAuthOptions = {
             name: `${HARDCODED_USER.first_name} ${HARDCODED_USER.last_name}`,
             first_name: HARDCODED_USER.first_name,
             last_name: HARDCODED_USER.last_name,
-          } as any;
+          };
         }
 
         return null;
@@ -62,11 +71,12 @@ export const authOptions: NextAuthOptions = {
     },
     jwt: ({ token, user }) => {
       if (user) {
+        const extendedUser = user as ExtendedUser;
         return {
           ...token,
-          id: user.id,
-          first_name: (user as any).first_name,
-          last_name: (user as any).last_name,
+          id: extendedUser.id,
+          first_name: extendedUser.first_name,
+          last_name: extendedUser.last_name,
         };
       }
       return token;
