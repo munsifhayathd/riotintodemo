@@ -46,11 +46,6 @@ export default function Home() {
                   Sign In
                 </Button>
               </Link>
-              <Link href="/register">
-                <Button className="rounded-lg bg-primary hover:bg-primary/90">
-                  Get Started
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -96,12 +91,12 @@ export default function Home() {
               variants={fadeIn}
               className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
             >
-              <Link href="/register">
+              <Link href="/login">
                 <Button size="lg" className="w-full sm:w-auto rounded-lg bg-primary hover:bg-primary/90 h-12 px-8">
-                  Start Building →
+                  Access Dashboard →
                 </Button>
               </Link>
-              <Link href="/dashboard">
+              <Link href="#operations">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-lg h-12 px-8">
                   View Operations
                 </Button>
@@ -163,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Australian Operations Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+      <section id="operations" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }}

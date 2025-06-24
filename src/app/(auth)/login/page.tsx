@@ -248,18 +248,16 @@ function LoginForm() {
                 </Button>
               </motion.div>
 
-              <motion.p
+              <motion.div
                 variants={itemVariants}
-                className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400"
+                className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200"
               >
-                Not registered?{" "}
-                <Link 
-                  href="/register" 
-                  className="text-primary hover:text-primary/90 font-medium"
-                >
-                  Sign Up now!
-                </Link>
-              </motion.p>
+                <h3 className="text-sm font-medium text-blue-900 mb-2">Demo Credentials:</h3>
+                <div className="text-sm text-blue-700">
+                  <p><strong>Email:</strong> admin@riotinto.com</p>
+                  <p><strong>Password:</strong> admin123</p>
+                </div>
+              </motion.div>
             </form>
           </motion.div>
         </div>

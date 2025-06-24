@@ -1,12 +1,17 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { db } from "./db";
-import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 
+// Hardcoded user for simplicity
+const HARDCODED_USER = {
+  id: "1",
+  email: "admin@riotinto.com",
+  password: "admin123",
+  first_name: "Admin",
+  last_name: "User",
+};
+
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
   session: {
     strategy: "jwt",
   },
@@ -25,31 +30,21 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const user = await db.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
-
-        if (!user) {
-          return null;
+        // Check against hardcoded credentials
+        if (
+          credentials.email === HARDCODED_USER.email &&
+          credentials.password === HARDCODED_USER.password
+        ) {
+          return {
+            id: HARDCODED_USER.id,
+            email: HARDCODED_USER.email,
+            name: `${HARDCODED_USER.first_name} ${HARDCODED_USER.last_name}`,
+            first_name: HARDCODED_USER.first_name,
+            last_name: HARDCODED_USER.last_name,
+          } as any;
         }
 
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-
-        if (!isPasswordValid) {
-          return null;
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          first_name: user.first_name,
-          last_name: user.last_name,
-        };
+        return null;
       },
     }),
   ],
@@ -60,6 +55,8 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
+          first_name: token.first_name,
+          last_name: token.last_name,
         },
       };
     },
@@ -68,6 +65,8 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: user.id,
+          first_name: (user as any).first_name,
+          last_name: (user as any).last_name,
         };
       }
       return token;
