@@ -9,13 +9,23 @@ export const COMPANY_SUBTITLE = "Discovering, mining and processing the world's 
 
 // Rio Tinto Operations
 export const AUSTRALIA_OPERATIONS = [
-  "Iron Ore Western Australia",
-  "Weipa Bauxite",
-  "Yarwun Alumina Refinery", 
-  "Dampier Salt",
-  "Gove Bauxite",
-  "Bell Bay Aluminium",
-  "Boyne Smelters Limited"
+  "Tom Price",
+  "Paraburdoo",
+  "Channar",
+  "Eastern Range",
+  "Marandoo",
+  "Brockman 2",
+  "Brockman 4",
+  "Nammuldi",
+  "Western Turner Syncline",
+  "Silvergrass",
+  "West Angelas",
+  "Hope Downs 1",
+  "Hope Downs 4",
+  "Yandicoogina",
+  "Robe Valley (Mesa A)",
+  "Robe Valley (Mesa J)",
+  "Gudai-Darri"
 ];
 
 // Rio Tinto Products
