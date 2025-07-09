@@ -46,6 +46,10 @@ next-env.d.ts
 *.swp
 *.swo
 
+# Cursor and Amazon Q rules
+.cursor/
+.amazonq/
+
 # PWA files
 **/public/sw.js
 **/public/workbox-*.js

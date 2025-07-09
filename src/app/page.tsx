@@ -75,7 +75,15 @@ export default function Home() {
             
             <motion.h1 
               variants={fadeIn}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary animate-gradient"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary leading-tight py-2"
+              style={{
+                background: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary) / 0.8), hsl(var(--primary)))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                paddingBottom: '0.25rem',
+                lineHeight: '1.1'
+              }}
             >
               {COMPANY_TAGLINE}
             </motion.h1>
